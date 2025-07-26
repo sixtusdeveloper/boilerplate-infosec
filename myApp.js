@@ -20,6 +20,15 @@ app.use(helmet.noSniff());
 // Prevent IE from Opening Untrusted HTML with helmet.ieNoOpen()
 app.use(helmet.ieNoOpen());
 
+// Ask Browsers to Access Your Site via HTTPS Only with helmet.hsts()
+var ninetyDaysInSeconds = 90 * 24 * 60 * 60;
+app.use(
+  helmet.hsts({
+    maxAge: ninetyDaysInSeconds,
+    force: true,
+  })
+);
+
 app.use(express.static("public"));
 app.use("/_api", api);
 app.get("/", function (request, response) {
