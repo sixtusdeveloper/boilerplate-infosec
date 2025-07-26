@@ -32,6 +32,9 @@ app.use(
 // Disable DNS Prefetching with helmet.dnsPrefetchControl()
 app.use(helmet.dnsPrefetchControl({ allow: false }));
 
+// Disable Client-Side Caching with helmet.noCache()
+app.use(helmet.noCache());
+
 app.use(express.static("public"));
 app.use("/_api", api);
 app.get("/", function (request, response) {
