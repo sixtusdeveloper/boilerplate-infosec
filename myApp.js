@@ -17,6 +17,9 @@ app.use(helmet.xssFilter());
 // Avoid Inferring the Response MIME Type with helmet.noSniff()
 app.use(helmet.noSniff());
 
+// Prevent IE from Opening Untrusted HTML with helmet.ieNoOpen()
+app.use(helmet.ieNoOpen());
+
 app.use(express.static("public"));
 app.use("/_api", api);
 app.get("/", function (request, response) {
