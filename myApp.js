@@ -45,6 +45,9 @@ app.use(
   })
 );
 
+// Configure Helmet Using the ‘parent’ helmet() Middleware
+app.use(helmet());
+
 app.use(express.static("public"));
 app.use("/_api", api);
 app.get("/", function (request, response) {
