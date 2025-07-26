@@ -35,6 +35,16 @@ app.use(helmet.dnsPrefetchControl({ allow: false }));
 // Disable Client-Side Caching with helmet.noCache()
 app.use(helmet.noCache());
 
+// Set a Content Security Policy with helmet.contentSecurityPolicy()
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "trusted-cdn.com"],
+    },
+  })
+);
+
 app.use(express.static("public"));
 app.use("/_api", api);
 app.get("/", function (request, response) {
