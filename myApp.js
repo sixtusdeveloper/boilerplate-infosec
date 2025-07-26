@@ -11,6 +11,9 @@ app.use(helmet.hidePoweredBy());
 // Mitigate the Risk of Clickjacking with helmet.frameguard()
 app.use(helmet.frameguard({ action: "deny" }));
 
+// Mitigate the Risk of Cross Site Scripting (XSS) Attacks with helmet.xssFilter()
+app.use(helmet.xssFilter());
+
 app.use(express.static("public"));
 app.use("/_api", api);
 app.get("/", function (request, response) {
