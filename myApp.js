@@ -29,6 +29,9 @@ app.use(
   })
 );
 
+// Disable DNS Prefetching with helmet.dnsPrefetchControl()
+app.use(helmet.dnsPrefetchControl({ allow: false }));
+
 app.use(express.static("public"));
 app.use("/_api", api);
 app.get("/", function (request, response) {
